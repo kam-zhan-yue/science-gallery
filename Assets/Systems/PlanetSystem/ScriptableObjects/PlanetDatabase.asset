@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16325f8c83f8443eb9c387cbbc5297c, type: 3}
+  m_Name: PlanetDatabase
+  m_EditorClassIdentifier: 
+  planets:
+  - id: earth
+    code: 1111
+    planet: {fileID: 1255277868292579793, guid: 6ca9e39b7fbb6402b99d903ae6bc7166, type: 3}
+  - id: purple
+    code: 2222
+    planet: {fileID: 8323977812119841670, guid: f8487786a0fb74605ae613fbea06c0d2, type: 3}
+  - id: rock
+    code: 3333
+    planet: {fileID: 4885921928583879656, guid: e3d7d40c2c16b4438aa1e56486c51ce3, type: 3}
+  - id: sun
+    code: 4444
+    planet: {fileID: 2497859935332193019, guid: edca2b9a329db4e49b5a71c9b03ca5d9, type: 3}

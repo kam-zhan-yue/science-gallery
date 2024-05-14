@@ -21,7 +21,7 @@ public class DialogueService : MonoBehaviour, IDialogueService
 
     private void Update()
     {
-        if (_playing && Input.GetMouseButtonDown(0))
+        if (_playing && Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             Advance();
         }
@@ -37,9 +37,8 @@ public class DialogueService : MonoBehaviour, IDialogueService
     [Button]
     private void Advance()
     {
-        if (_currentStory.canContinue && _currentStory.currentChoices.Count == 0)
+        if (_currentStory.canContinue)
         {
-            Debug.Log($"Advance {_currentStory.currentChoices.Count}");
              DialoguePayload dialoguePayload = new DialoguePayload
              {
                  body = _currentStory.Continue(),
@@ -48,9 +47,9 @@ public class DialogueService : MonoBehaviour, IDialogueService
              };
              Messenger.Default.Publish(dialoguePayload);
         }
-        else if(!_currentStory.canContinue)
+        // If the story cannot continue and there are no more choices, then the story is ended
+        else if(!_currentStory.canContinue && _currentStory.currentChoices.Count == 0)
         {
-            Debug.Log("Stop playing");
             DialoguePayload dialoguePayload = new DialoguePayload
             {
                 stop = true,

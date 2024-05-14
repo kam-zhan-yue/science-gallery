@@ -34,7 +34,7 @@ public class DialoguePopup : Popup
         }
         else
         {
-            if(!isShowing)
+            if (!isShowing)
                 ShowPopup();
             body.SetText(payload.body);
             DisplayChoices(payload.choices);

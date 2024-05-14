@@ -10,6 +10,7 @@ public class PlanetDatabase : ScriptableObject
     {
         public string id;
         public string code;
+        public string dialogueId;
         public Planet planet;
     }
 

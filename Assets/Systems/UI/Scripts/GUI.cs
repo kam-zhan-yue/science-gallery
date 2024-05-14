@@ -11,7 +11,6 @@ public class GUI : Popup
 
     protected override void InitPopup()
     {
-        Debug.Log("Register GUI");
         ServiceLocator.Instance.Get<IPopupService>().Register(this);
     }
 
@@ -30,6 +29,7 @@ public class GUI : Popup
 
     private void ShowKeypadButton(Popup popup)
     {
+        Debug.Log("Show Keypad Button");
         keypadButton.gameObject.SetActiveFast(true);
     }
 }

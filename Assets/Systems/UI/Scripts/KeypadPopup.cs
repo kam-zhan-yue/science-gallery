@@ -17,7 +17,6 @@ public class KeypadPopup : Popup
 
     protected override void InitPopup()
     {
-        Debug.Log("Register KeypadPopup");
         ServiceLocator.Instance.Get<IPopupService>().Register(this);
         _buttons = GetComponentsInChildren<KeypadButtonPopupItem>();
         display.SetText(string.Empty);
@@ -52,6 +51,7 @@ public class KeypadPopup : Popup
 
     public override void CloseButtonClicked()
     {
+        Debug.Log("Close Button Clicked");
         base.CloseButtonClicked();
         HidePopup();
     }

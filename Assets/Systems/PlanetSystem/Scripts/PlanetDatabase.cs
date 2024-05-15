@@ -15,4 +15,14 @@ public class PlanetDatabase : ScriptableObject
     }
 
     [TableList] public PlanetData[] planets;
+
+    public bool ValidCode(string code)
+    {
+        for (int i = 0; i < planets.Length; ++i)
+        {
+            if (planets[i].code == code)
+                return true;
+        }
+        return false;
+    }
 }

@@ -14,6 +14,8 @@ public class DialoguePopup : Popup
     [Header("References")]
     [SerializeField] private TMP_Text title;
     [SerializeField] private TMP_Text body;
+    [SerializeField] private RectTransform header;
+    [SerializeField] private Image portrait;
 
     [Header("Parameters")] 
     [SerializeField] private float typeSpeed = 15f;
@@ -78,6 +80,9 @@ public class DialoguePopup : Popup
         {
             if (!isShowing)
                 ShowPopup();
+            header.gameObject.SetActiveFast(!string.IsNullOrEmpty(payload.title));
+            portrait.gameObject.SetActiveFast(payload.portrait != null);
+            portrait.sprite = payload.portrait;
             DisplayDialogue(_data.title, _data.body);
         }
     }

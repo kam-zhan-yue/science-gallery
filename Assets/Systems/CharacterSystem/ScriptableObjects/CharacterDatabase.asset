@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CharacterDatabase
   m_EditorClassIdentifier: 
   characters:
-  - id: cthlulu
+  - id: Cthlulu
     name: Cthlulu
     portrait: {fileID: 984125618, guid: bf687d356503d4a1195b149aad6fbadc, type: 3}
-  - id: ghost
+  - id: Ghost
     name: Dapper
     portrait: {fileID: -407909291, guid: 541213639a3b848af979b4125a62b9ec, type: 3}

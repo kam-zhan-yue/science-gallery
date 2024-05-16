@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DialogueDatabase
   m_EditorClassIdentifier: 
   dialogue:
-  - id: test
-    text: {fileID: 4900000, guid: a06507bb6be564d44b8dd3a0314cb387, type: 3}
+  - id: choices
+    text: {fileID: 4900000, guid: 18f5f12c70ca64a58afa919c7147a74e, type: 3}
   - id: rich
     text: {fileID: 4900000, guid: 74dcade5ae9d7445f8b5b6e6224df3c4, type: 3}
   - id: characters

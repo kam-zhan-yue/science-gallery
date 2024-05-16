@@ -5,7 +5,7 @@ using Kuroneko.UtilityDelivery;
 using TMPro;
 using UnityEngine;
 
-public class DialogueChoicePopupItem : MonoBehaviour
+public class DialogueChoicePopupItem : PopupItem
 {
     [SerializeField] private TMP_Text text;
     

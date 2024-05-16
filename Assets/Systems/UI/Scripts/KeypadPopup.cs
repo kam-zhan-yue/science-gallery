@@ -28,7 +28,7 @@ public class KeypadPopup : Popup
 
     protected override void InitPopup()
     {
-        ServiceLocator.Instance.Get<IPopupService>().Register(this);
+        base.InitPopup();
         _buttons = GetComponentsInChildren<KeypadButtonPopupItem>();
         display.SetText(string.Empty);
     }

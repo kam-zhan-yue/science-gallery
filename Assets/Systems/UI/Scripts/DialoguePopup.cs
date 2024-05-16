@@ -24,12 +24,6 @@ public class DialoguePopup : Popup
     private DialoguePayload _data = new();
     private CoroutineHandle _typewriterRoutine;
     
-
-    protected override void InitPopup()
-    {
-        ServiceLocator.Instance.Get<IPopupService>().Register(this);
-    }
-
     private void Start()
     {
         Messenger.Default.Subscribe<DialoguePayload>(UpdateDialogue);

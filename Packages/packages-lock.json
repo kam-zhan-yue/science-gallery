@@ -14,6 +14,15 @@
       "dependencies": {},
       "hash": "e6eab4ce37bccb267543e990abb474ef7a11c59d"
     },
+    "com.kamzhanyue.audio-delivery": {
+      "version": "https://github.com/kam-zhan-yue/audio-delivery.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.kamzhanyue.utility-delivery": "0.1.0"
+      },
+      "hash": "5701d7f24259dcd072372dcacb41fe2d2225dba2"
+    },
     "com.kamzhanyue.ui-delivery": {
       "version": "https://github.com/kam-zhan-yue/ui-delivery.git",
       "depth": 0,
@@ -21,7 +30,7 @@
       "dependencies": {
         "com.kamzhanyue.utility-delivery": "0.1.0"
       },
-      "hash": "37fb8b05cb1c3215a92daef382559fa6627111af"
+      "hash": "bdad2179f7805578e6945c789243ee7c7f50174f"
     },
     "com.kamzhanyue.utility-delivery": {
       "version": "https://github.com/kam-zhan-yue/utility-delivery.git",

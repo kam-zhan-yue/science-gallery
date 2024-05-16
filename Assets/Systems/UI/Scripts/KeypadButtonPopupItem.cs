@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class KeypadButtonPopupItem : MonoBehaviour
+public class KeypadButtonPopupItem : PopupItem
 {
     [SerializeField] private TMP_Text text;
     

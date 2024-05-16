@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class CharacterDatabase : MonoBehaviour
+[CreateAssetMenu(menuName = "ScriptableObjects/CharacterDatabase")]
+public class CharacterDatabase : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    [Serializable]
+    public class CharacterData
     {
-        
+        public string id;
+        public string name;
+        public Sprite portrait;
     }
 
-    // Update is called once per frame
-    void Update()
+    [TableList] public CharacterData[] characters;
+
+    public bool TryGetData(string id, out CharacterData data)
     {
-        
+        for (int i = 0; i < characters.Length; ++i)
+        {
+            if (characters[i].id == id)
+            {
+                data = characters[i];
+                return true;
+            }
+        }
+
+        data = null;
+        return false;
     }
 }

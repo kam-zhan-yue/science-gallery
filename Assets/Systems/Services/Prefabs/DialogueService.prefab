@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueDatabase: {fileID: 11400000, guid: f6127b4fa4ba8409d92e253b2672af5a, type: 2}
+  characterDatabase: {fileID: 11400000, guid: 8619f5e4827db433dbcca193f9c41fcc, type: 2}

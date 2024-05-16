@@ -15,3 +15,7 @@ MonoBehaviour:
   dialogue:
   - id: test
     text: {fileID: 4900000, guid: a06507bb6be564d44b8dd3a0314cb387, type: 3}
+  - id: rich
+    text: {fileID: 4900000, guid: 74dcade5ae9d7445f8b5b6e6224df3c4, type: 3}
+  - id: characters
+    text: {fileID: 4900000, guid: d96fdd452134c4dbca1ee0d6e3bacdbf, type: 3}

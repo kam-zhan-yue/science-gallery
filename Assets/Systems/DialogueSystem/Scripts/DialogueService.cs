@@ -11,6 +11,7 @@ using UnityEngine;
 public class DialogueService : MonoBehaviour, IDialogueService
 {
     [SerializeField] private DialogueDatabase dialogueDatabase;
+    [SerializeField] private CharacterDatabase characterDatabase;
     private Story _currentStory;
 
     private void Awake()
@@ -29,23 +30,59 @@ public class DialogueService : MonoBehaviour, IDialogueService
     {
         if (_currentStory.canContinue)
         {
-             DialoguePayload dialoguePayload = new DialoguePayload
-             {
-                 body = _currentStory.Continue(),
-                 choices = _currentStory.currentChoices,
-                 stop = false,
-             };
-             Messenger.Default.Publish(dialoguePayload);
+            Continue();
         }
         // If the story cannot continue and there are no more choices, then the story is ended
         else if(!_currentStory.canContinue && _currentStory.currentChoices.Count == 0)
         {
-            DialoguePayload dialoguePayload = new DialoguePayload
-            {
-                stop = true,
-            };
-            Messenger.Default.Publish(dialoguePayload);
+            Stop();
         }
+    }
+
+    private void Continue()
+    {
+        string message = _currentStory.Continue();
+        string id, body;
+        // Split the string at the first instance of ':'
+        string[] parts = message.Split(new char[] { ':' }, 2);
+        if (parts.Length < 2)
+        {
+            id = string.Empty;
+            body = message;
+        }
+        else
+        {
+            id = parts[0].Trim(); 
+            body = parts[1].Trim();
+        }
+        Messenger.Default.Publish(CreatePayload(id, body));
+    }
+
+    private DialoguePayload CreatePayload(string id, string body)
+    {
+        DialoguePayload payload = new();
+        if (characterDatabase.TryGetData(id, out CharacterDatabase.CharacterData data))
+        {
+            payload.title = data.name;
+            payload.body = body;
+            payload.portrait = data.portrait;
+        }
+        else
+        {
+            payload.title = id;
+            payload.body = body;
+        }
+        payload.choices = _currentStory.currentChoices;
+        return payload;
+    }
+
+    private void Stop()
+    {
+        DialoguePayload payload = new DialoguePayload
+        {
+            stop = true,
+        };
+        Messenger.Default.Publish(payload);
     }
 
     public void Select(int choiceIndex)

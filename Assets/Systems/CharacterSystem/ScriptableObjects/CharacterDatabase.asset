@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a167ff967c58949089e40f2de622a7f0, type: 3}
+  m_Name: CharacterDatabase
+  m_EditorClassIdentifier: 
+  characters:
+  - id: cthlulu
+    name: Cthlulu
+    portrait: {fileID: 984125618, guid: bf687d356503d4a1195b149aad6fbadc, type: 3}
+  - id: ghost
+    name: Dapper
+    portrait: {fileID: -407909291, guid: 541213639a3b848af979b4125a62b9ec, type: 3}

@@ -3,6 +3,7 @@ using DG.Tweening;
 using Ink.Runtime;
 using Kuroneko.UIDelivery;
 using Kuroneko.UtilityDelivery;
+using MEC;
 using SuperMaxim.Messaging;
 using TMPro;
 using UnityEngine;
@@ -18,8 +19,9 @@ public class DialoguePopup : Popup
     [SerializeField] private float typeSpeed = 15f;
 
     private bool _textScrolling = false;
-    private Tween _typeWriterTween;
     private DialoguePayload _data = new();
+    private CoroutineHandle _typewriterRoutine;
+    
 
     protected override void InitPopup()
     {
@@ -49,8 +51,9 @@ public class DialoguePopup : Popup
         // If there is text still scrolling, then kill the tween
         if (_textScrolling)
         {
-            _typeWriterTween.Kill();
             _textScrolling = false;
+            Timing.KillCoroutines(_typewriterRoutine);
+            body.SetText(_data.body);
         }
         // If not, check whether there are choices. If there are choices, then show
         else if(_data.choices.Count > 0)
@@ -75,7 +78,7 @@ public class DialoguePopup : Popup
         {
             if (!isShowing)
                 ShowPopup();
-            DisplayDialogue("Test Header", _data.body);
+            DisplayDialogue(_data.title, _data.body);
         }
     }
 
@@ -83,24 +86,33 @@ public class DialoguePopup : Popup
     {
         Debug.Log($"Displaying Dialogue {header}: {message}");
         title.SetText(header);
-        string text = string.Empty;
-        float speed = typeSpeed;
-        if (speed == 0f)
-            speed = 1f;
         _textScrolling = true;
-        _typeWriterTween = DOTween.To(() => text, x => text = x, message, message.Length / speed)
-            .OnUpdate(() =>
+        _typewriterRoutine = Timing.RunCoroutine(TypewriterRoutine(message));
+    }
+
+    private IEnumerator<float> TypewriterRoutine(string message)
+    {
+        _textScrolling = true;
+        body.text = string.Empty;
+        bool richTag = false;
+        for (int i = 0; i < message.Length; ++i)
+        {
+            body.text += message[i];
+            if (message[i] == '<')
             {
-                body.SetText(text);
-            })
-            .OnComplete(() =>
+                richTag = true;
+            }
+            else if (richTag && message[i] == '>')
             {
-                _textScrolling = false;
-            }).OnKill(() =>
+                richTag = false;
+            }
+            else if(!richTag)
             {
-                _textScrolling = false;
-                body.SetText(message);
-            });
+                yield return Timing.WaitForSeconds(1/typeSpeed);
+            }
+        }
+
+        _textScrolling = false;
     }
 
     private void DisplayChoices(List<Choice> choices)

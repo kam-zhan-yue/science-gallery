@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private SpriteRenderer _spriteRenderer;
 
-    // Update is called once per frame
-    void Update()
+    public SpriteRenderer SpriteRenderer => _spriteRenderer;
+
+    private void Awake()
     {
-        
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 }

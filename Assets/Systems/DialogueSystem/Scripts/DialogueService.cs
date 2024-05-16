@@ -12,30 +12,20 @@ public class DialogueService : MonoBehaviour, IDialogueService
 {
     [SerializeField] private DialogueDatabase dialogueDatabase;
     private Story _currentStory;
-    private bool _playing = false;
 
     private void Awake()
     {
         ServiceLocator.Instance.Register<IDialogueService>(this);
     }
-
-    private void Update()
-    {
-        if (_playing && Input.GetMouseButtonDown(0) || Input.touchCount > 0)
-        {
-            Advance();
-        }
-    }
-
+    
     public void Play(string id)
     {
         _currentStory = new Story(dialogueDatabase.GetText(id)?.text);
-        _playing = true;
         Advance();
     }
 
     [Button]
-    private void Advance()
+    public void Advance()
     {
         if (_currentStory.canContinue)
         {
@@ -55,7 +45,6 @@ public class DialogueService : MonoBehaviour, IDialogueService
                 stop = true,
             };
             Messenger.Default.Publish(dialoguePayload);
-            _playing = false;
         }
     }
 

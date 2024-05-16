@@ -732,7 +732,7 @@ MonoBehaviour:
         sequencer: {fileID: 3400791043261487354}
         anchorMax: {x: 0, y: 0}
         anchorMin: {x: 0, y: 0}
-        anchorPos: {x: 0, y: -1000}
+        anchorPos: {x: 0, y: 0}
         anchorPos3D: {x: 0, y: 0, z: 0}
         pivot: {x: 0, y: 0}
         punch: {x: 0, y: 0}
@@ -1174,7 +1174,7 @@ MonoBehaviour:
         sequencer: {fileID: 3400791043261487354}
         anchorMax: {x: 0, y: 0}
         anchorMin: {x: 0, y: 0}
-        anchorPos: {x: 0, y: -1000}
+        anchorPos: {x: 0, y: 0}
         anchorPos3D: {x: 0, y: 0, z: 0}
         pivot: {x: 0, y: 0}
         punch: {x: 0, y: 0}
@@ -1581,7 +1581,7 @@ MonoBehaviour:
         sequencer: {fileID: 3400791043261487354}
         anchorMax: {x: 0, y: 0}
         anchorMin: {x: 0, y: 0}
-        anchorPos: {x: 0, y: 0}
+        anchorPos: {x: 0, y: 800}
         anchorPos3D: {x: 0, y: 0, z: 0}
         pivot: {x: 0, y: 0}
         punch: {x: 0, y: 0}

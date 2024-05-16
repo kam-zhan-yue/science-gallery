@@ -20,5 +20,6 @@ public class DialogueChoicePopupItem : MonoBehaviour
     public void Select()
     {
         ServiceLocator.Instance.Get<IDialogueService>().Select(_choice.index);
+        ServiceLocator.Instance.Get<IPopupService>().HidePopup<DialogueChoicePopup>();
     }
 }

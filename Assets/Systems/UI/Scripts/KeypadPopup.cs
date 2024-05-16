@@ -24,6 +24,8 @@ public class KeypadPopup : Popup
 
     private bool _interactive = false;
 
+    public Action onComplete;
+
     protected override void InitPopup()
     {
         ServiceLocator.Instance.Get<IPopupService>().Register(this);
@@ -75,6 +77,7 @@ public class KeypadPopup : Popup
         CodePayload codePayload = new CodePayload { code = display.text };
         Messenger.Default.Publish(codePayload);
         HidePopup();
+        onComplete?.Invoke();
     }
 
     private async UniTask ErrorAsync(CancellationToken token)
@@ -107,8 +110,8 @@ public class KeypadPopup : Popup
 
     public override void CloseButtonClicked()
     {
-        Debug.Log("Close Button Clicked");
         base.CloseButtonClicked();
+        onComplete?.Invoke();
         HidePopup();
     }
 }

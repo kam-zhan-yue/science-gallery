@@ -20,7 +20,7 @@ public class GUI : Popup
     {
         keypadButton.onPointerClick += ShowKeypad;
         KeypadPopup keypadPopup = ServiceLocator.Instance.Get<IPopupService>().GetPopup<KeypadPopup>();
-        keypadPopup.onCloseButtonClicked += ShowKeypadButton;
+        keypadPopup.onComplete += ShowKeypadButton;
         Messenger.Default.Subscribe<DialoguePayload>(UpdateDialogue);
     }
 
@@ -38,7 +38,7 @@ public class GUI : Popup
         keypadButton.gameObject.SetActiveFast(false);
     }
 
-    private void ShowKeypadButton(Popup popup)
+    private void ShowKeypadButton()
     {
         Debug.Log("Show Keypad Button");
         keypadButton.gameObject.SetActiveFast(true);

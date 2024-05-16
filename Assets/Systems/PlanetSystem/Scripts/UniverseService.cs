@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Kuroneko.UtilityDelivery;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UniverseService : MonoBehaviour, IUniverseService
@@ -30,6 +29,25 @@ public class UniverseService : MonoBehaviour, IUniverseService
         Debug.Log(id);
         // Loop through _planets to find the id that should be on and then turn it on
         _planets[id].gameObject.SetActiveFast(true);
-
+        Sequence sequence = DOTween.Sequence();
+        
+        // Create a fade out tween
+        Tween fadeOut = _planets[id].SpriteRenderer.DOFade(0f, 1f);
+        // Append it to the sequence
+        sequence.Append(fadeOut);
+        
+        // Create a fade in tween
+        Tween fadeIn = _planets[id].SpriteRenderer.DOFade(0f, 1f);
+        // Append it to the sequence
+        sequence.Append(fadeIn);
+        
+        
+        
+        sequence.OnComplete(() =>
+        {
+            PlanetDatabase.PlanetData data = planetDatabase.GetPlanetDataById(id);
+            ServiceLocator.Instance.Get<IDialogueService>().Play(data?.dialogueId);
+        });
+        sequence.Play();
     }
 }

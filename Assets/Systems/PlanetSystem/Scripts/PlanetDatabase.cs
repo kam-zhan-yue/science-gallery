@@ -26,13 +26,24 @@ public class PlanetDatabase : ScriptableObject
         }
         return false;
     }
-    public string GetPlanet(string code)
+    
+    public PlanetData GetPlanetDataById(string id)
+    {
+        for (int i = 0; i < planets.Length; ++i)
+        {
+            if (planets[i].id == id)
+                return planets[i];
+        }
+        return null;
+    }
+    
+    public PlanetData GetPlanetDataByCode(string code)
     {
         for (int i = 0; i < planets.Length; ++i)
         {
             if (planets[i].code == code)
-                return planets[i].id;
+                return planets[i];
         }
-        return string.Empty;
+        return null;
     }
 }

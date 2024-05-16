@@ -45,6 +45,9 @@ public class KeypadPopup : Popup
     {
         base.ShowPopup();
         _interactive = true;
+        success.gameObject.SetActiveFast(false);
+        error.gameObject.SetActiveFast(false);
+        display.SetText(string.Empty);
     }
 
     private void OnPressed(string value)

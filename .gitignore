@@ -83,3 +83,6 @@ crashlytics-build.properties
 .idea/**/dictionaries
 .idea/**/shelf
 .idea/*
+
+
+.vscode

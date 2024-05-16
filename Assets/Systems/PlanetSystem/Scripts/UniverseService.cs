@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Kuroneko.UtilityDelivery;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UniverseService : MonoBehaviour, IUniverseService
 {
     [SerializeField] private PlanetDatabase planetDatabase;
 
-    private readonly List<Planet> _planets = new();
+    private readonly Dictionary<string,Planet> _planets = new();
 
     private void Awake()
     {
@@ -20,12 +21,15 @@ public class UniverseService : MonoBehaviour, IUniverseService
         {
             Planet planet = Instantiate(planetDatabase.planets[i].planet);
             planet.gameObject.SetActiveFast(false);
-            _planets.Add(planet);
+            _planets.Add(planetDatabase.planets[i].id, planet);
         }
     }
     
     public void SwitchPlanet(string id)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(id);
+        // Loop through _planets to find the id that should be on and then turn it on
+        _planets[id].gameObject.SetActiveFast(true);
+
     }
 }

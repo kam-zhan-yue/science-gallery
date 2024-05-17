@@ -14,6 +14,11 @@ public class DialogueChoicePopup : Popup
 
     private readonly List<DialogueChoicePopupItem> _choices = new();
 
+    protected override void InitPopup()
+    {
+        ServiceLocator.Instance.Get<IPopupService>().Register(this);
+    }
+    
     private void Start()
     {
         HidePopup();

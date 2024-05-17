@@ -728,7 +728,7 @@ MonoBehaviour:
       rectTransform:
         easing: 1
         duration: 0
-        type: 2
+        type: 6
         sequencer: {fileID: 3400791043261487354}
         anchorMax: {x: 0, y: 0}
         anchorMin: {x: 0, y: 0}
@@ -1170,7 +1170,7 @@ MonoBehaviour:
       rectTransform:
         easing: 18
         duration: 0.2
-        type: 2
+        type: 6
         sequencer: {fileID: 3400791043261487354}
         anchorMax: {x: 0, y: 0}
         anchorMin: {x: 0, y: 0}
@@ -1577,7 +1577,7 @@ MonoBehaviour:
       rectTransform:
         easing: 18
         duration: 0.2
-        type: 2
+        type: 6
         sequencer: {fileID: 3400791043261487354}
         anchorMax: {x: 0, y: 0}
         anchorMin: {x: 0, y: 0}

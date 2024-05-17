@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Kuroneko.AudioDelivery;
 using Kuroneko.UIDelivery;
 using Kuroneko.UtilityDelivery;
 using Sirenix.OdinInspector;
@@ -28,7 +29,7 @@ public class KeypadPopup : Popup
 
     protected override void InitPopup()
     {
-        base.InitPopup();
+        ServiceLocator.Instance.Get<IPopupService>().Register(this);
         _buttons = GetComponentsInChildren<KeypadButtonPopupItem>();
         display.SetText(string.Empty);
     }
@@ -71,6 +72,7 @@ public class KeypadPopup : Popup
 
     private async UniTask SubmitAsync(CancellationToken token)
     {
+        ServiceLocator.Instance.Get<IAudioService>().Play("CORRECT");
         _interactive = false;
         success.gameObject.SetActiveFast(true);
         error.gameObject.SetActive(false);
@@ -85,6 +87,7 @@ public class KeypadPopup : Popup
 
     private async UniTask ErrorAsync(CancellationToken token)
     {
+        ServiceLocator.Instance.Get<IAudioService>().Play("INCORRECT");
         _interactive = false;
         success.gameObject.SetActiveFast(false);
         error.gameObject.SetActive(true);

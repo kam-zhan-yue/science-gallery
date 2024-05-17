@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Ink.Runtime;
+using Kuroneko.AudioDelivery;
 using Kuroneko.UIDelivery;
 using Kuroneko.UtilityDelivery;
 using MEC;
@@ -23,6 +24,11 @@ public class DialoguePopup : Popup
     private bool _textScrolling = false;
     private DialoguePayload _data = new();
     private CoroutineHandle _typewriterRoutine;
+
+    protected override void InitPopup()
+    {
+        ServiceLocator.Instance.Get<IPopupService>().Register(this);
+    }
     
     private void Start()
     {
@@ -44,6 +50,7 @@ public class DialoguePopup : Popup
 
     private void AdvanceDialogue()
     {
+        ServiceLocator.Instance.Get<IAudioService>().Play("BUTTON");
         // If there is text still scrolling, then kill the tween
         if (_textScrolling)
         {

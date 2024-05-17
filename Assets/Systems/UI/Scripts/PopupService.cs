@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Kuroneko.UIDelivery;
 using Kuroneko.UtilityDelivery;
@@ -12,7 +10,6 @@ public class PopupService : MonoBehaviour, IPopupService
 
     private void Awake()
     {
-        Debug.Log("Register Popup Service");
         ServiceLocator.Instance.Register<IPopupService>(this);
     }
     

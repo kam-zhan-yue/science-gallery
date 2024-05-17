@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Ink.Runtime;
+using Kuroneko.AudioDelivery;
+using Kuroneko.UIDelivery;
 using Kuroneko.UtilityDelivery;
 using TMPro;
 using UnityEngine;
@@ -21,5 +23,6 @@ public class DialogueChoicePopupItem : PopupItem
     {
         ServiceLocator.Instance.Get<IDialogueService>().Select(_choice.index);
         ServiceLocator.Instance.Get<IPopupService>().HidePopup<DialogueChoicePopup>();
+        ServiceLocator.Instance.Get<IAudioService>().Play("BUTTON");
     }
 }

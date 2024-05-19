@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Ink.Runtime;
+using Kuroneko.AudioDelivery;
 using Kuroneko.UtilityDelivery;
 using Sirenix.OdinInspector;
 using SuperMaxim.Messaging;
@@ -21,6 +22,7 @@ public class DialogueService : MonoBehaviour, IDialogueService
     
     public void Play(string id)
     {
+        ServiceLocator.Instance.Get<IAudioService>().Play("MAIN");
         _currentStory = new Story(dialogueDatabase.GetText(id)?.text);
         Advance();
     }

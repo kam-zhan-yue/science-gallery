@@ -19,3 +19,5 @@ MonoBehaviour:
     clip: {fileID: 11400000, guid: e2415289094ae46d19ac7891db9c9233, type: 2}
   - id: INCORRECT
     clip: {fileID: 11400000, guid: 72a616dacee834ba49b1082fc3bfc839, type: 2}
+  - id: MAIN
+    clip: {fileID: 11400000, guid: 47441213b30cf4d018b02764f7eb89b4, type: 2}

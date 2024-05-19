@@ -9,6 +9,8 @@ public class UniverseService : MonoBehaviour, IUniverseService
 
     private readonly Dictionary<string,Planet> _planets = new();
 
+    private string _active = string.Empty;
+
     private void Awake()
     {
         ServiceLocator.Instance.Register<IUniverseService>(this);
@@ -26,23 +28,37 @@ public class UniverseService : MonoBehaviour, IUniverseService
     
     public void SwitchPlanet(string id)
     {
-        Debug.Log(id);
+        Debug.Log($"Fade out {_active}");
+        Debug.Log($"Fade in {id}");
         // Loop through _planets to find the id that should be on and then turn it on
-        _planets[id].gameObject.SetActiveFast(true);
         Sequence sequence = DOTween.Sequence();
-        
-        // Create a fade out tween
-        Tween fadeOut = _planets[id].SpriteRenderer.DOFade(0f, 1f);
-        // Append it to the sequence
-        sequence.Append(fadeOut);
-        
-        // Create a fade in tween
-        Tween fadeIn = _planets[id].SpriteRenderer.DOFade(0f, 1f);
-        // Append it to the sequence
-        sequence.Append(fadeIn);
-        
-        
-        
+
+        // If there is an active planet, fade it out
+        if (_planets.TryGetValue(_active, out Planet activePlanet))
+        {
+            // Create a fade out tween
+            Tween fadeOut = activePlanet.SpriteRenderer.DOFade(0f, 1f).OnComplete(() =>
+            {
+                activePlanet.gameObject.SetActiveFast(false);
+            });
+            // Append it to the sequence
+            sequence.Append(fadeOut);
+        }
+
+        if (_planets.TryGetValue(id, out Planet nextPlanet))
+        {
+            nextPlanet.gameObject.SetActiveFast(true);
+            Color color = nextPlanet.SpriteRenderer.color;
+            color.a = 0f;
+            nextPlanet.SpriteRenderer.color = color;
+            // Create a fade in tween
+            Tween fadeIn = nextPlanet.SpriteRenderer.DOFade(1f, 1f);
+            // Append it to the sequence
+            sequence.Append(fadeIn);
+        }
+
+        _active = id;
+
         sequence.OnComplete(() =>
         {
             PlanetDatabase.PlanetData data = planetDatabase.GetPlanetDataById(id);

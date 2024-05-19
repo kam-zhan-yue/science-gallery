@@ -15,7 +15,7 @@ MonoBehaviour:
   planets:
   - id: earth
     code: 1111
-    dialogueId: rich
+    dialogueId: main
     planet: {fileID: 1255277868292579793, guid: 6ca9e39b7fbb6402b99d903ae6bc7166, type: 3}
   - id: purple
     code: 2222

@@ -19,3 +19,7 @@ MonoBehaviour:
     text: {fileID: 4900000, guid: 74dcade5ae9d7445f8b5b6e6224df3c4, type: 3}
   - id: characters
     text: {fileID: 4900000, guid: d96fdd452134c4dbca1ee0d6e3bacdbf, type: 3}
+  - id: game
+    text: {fileID: 4900000, guid: eb0bc09e0c5564a09b334d5fb46a0439, type: 3}
+  - id: main
+    text: {fileID: 4900000, guid: dbcf716dc25104c6d8ef1b219f552e80, type: 3}
